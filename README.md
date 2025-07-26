@@ -181,6 +181,8 @@ Aditya Vishwakarma
 
 Stay within API rate limits when using Covalent (default delay of 1.2s is added).
 
+💡 You can update or add wallet addresses by editing the data/wallets.txt file. Each line should contain a single wallet address (without quotes).
+
 Only tested on Ethereum Mainnet (Chain ID: 1).
 
 Ideal for wallet-level credit/risk scoring, DeFi fraud detection, or behavioral wallet analysis.
