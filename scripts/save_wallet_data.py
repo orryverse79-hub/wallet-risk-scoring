@@ -5,7 +5,7 @@ import requests
 
 # --- Configuration ---
 CHAIN_ID = "1"  # Ethereum Mainnet
-COVALENT_API_KEY = "cqt_rQtBwVV3BGDM6CCwyCvHHRvKTdJ9"
+COVALENT_API_KEY = "ENTER_YOUR_API_KEY_HERE"
 
 # Load wallets from file
 wallets_file_path = os.path.join("data", "wallets.txt")
