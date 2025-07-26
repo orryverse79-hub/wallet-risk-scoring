@@ -7,18 +7,31 @@ This project analyzes on-chain wallet activity from Compound V2/V3 using the Cov
 ## 📂 Folder Structure
 
 wallet-risk-scoring/
+
 ├── data/
+
 │ ├── wallets.txt # List of 100 wallet addresses
+
 │ └── wallet_data/ # JSON files of raw wallet transactions
+
 ├── outputs/
+
 │ ├── wallet_features.csv # Engineered wallet-level features
+
 │ └── wallet_scores.csv # Final risk scores (0–1000)
+
 ├── scripts/
+
 │ ├── debug_fetch_only.py # (Optional) Debug script for testing API call
+
 │ ├── save_wallet_data.py # Main script to fetch transaction history
+
 │ ├── wallet_transaction_extraction.py # Feature extraction
+
 │ └── wallet_risk_scoring.py # Risk scoring logic
+
 ├── requirements.txt # Python dependencies
+
 └── README.md # Project documentation
 
 
@@ -41,6 +54,7 @@ wallet-risk-scoring/
 - ✅ # 🔑 Don't forget:
 Open `scripts/fetch_wallets.py` and replace the value of `COVALENT_API_KEY` with your actual Covalent API key:
 COVALENT_API_KEY = "ENTER_YOUR_API_KEY_HERE"
+
 
 
 ### 2. 🧾 Feature Engineering
