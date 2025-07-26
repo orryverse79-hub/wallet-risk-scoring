@@ -10,29 +10,27 @@ wallet-risk-scoring/
 
 ├── data/
 
-│ ├── wallets.txt # List of 100 wallet addresses
+│   ├── wallets.txt              # List of 100 wallet addresses
 
-│ └── wallet_data/ # JSON files of raw wallet transactions
+│   └── wallet_data/             # Raw JSONs per wallet
 
 ├── outputs/
 
-│ ├── wallet_features.csv # Engineered wallet-level features
+│   ├── wallet_features.csv      # Engineered features table
 
-│ └── wallet_scores.csv # Final risk scores (0–1000)
+│   └── wallet_scores.csv        # Final wallet risk scores + risk levels
 
 ├── scripts/
 
-│ ├── debug_fetch_only.py # (Optional) Debug script for testing API call
+│   ├── fetch_wallets.py         # Fetch transaction data via Covalent
 
-│ ├── save_wallet_data.py # Main script to fetch transaction history
+│   ├── wallet_transaction_extraction.py  # Feature-extraction logic
 
-│ ├── wallet_transaction_extraction.py # Feature extraction
+│   └── wallet_risk_scoring.py   # Compute risk score & assign risk level
 
-│ └── wallet_risk_scoring.py # Risk scoring logic
+├── requirements.txt             # Python dependencies (e.g. pandas, scikit‑learn)
 
-├── requirements.txt # Python dependencies
-
-└── README.md # Project documentation
+└── README.md                    # Project documentation (this file)
 
 
 ---
@@ -50,10 +48,14 @@ wallet-risk-scoring/
 - Used [Covalent API](https://www.covalenthq.com/docs/api/) to fetch historical transactions for each wallet on Ethereum Mainnet.
 - Saved results in `data/wallet_data/` as individual `.json` files.
 - Script used: `scripts/fetch_wallets.py`
+- Loads wallet list from `data/wallets.txt`, fetches and saves JSON data into `data/wallet_data/`.
 
+- 
 - ✅ # 🔑 Don't forget:
 Open `scripts/fetch_wallets.py` and replace the value of `COVALENT_API_KEY` with your actual Covalent API key:
+```bash
 COVALENT_API_KEY = "ENTER_YOUR_API_KEY_HERE"
+```
 
 
 
@@ -101,7 +103,7 @@ Assigned a normalized risk score using the following logic:
 | 701–1000         | ✅ Low Risk      |
 
 - Script used: 
-```bash
+```
 scripts/wallet_risk_scoring.py
 ```
 
@@ -110,11 +112,11 @@ outputs/wallet_scores.csv
 ---
 
 
-## 💻 Requirements
+⚙️ Setup & Execution
 
-Install all dependencies via:
+1. Install the Python dependencies:
 
-```bash
+```
 pip install -r requirements.txt
 ```
 
@@ -132,11 +134,13 @@ scikit-learn
 
 Make sure you're in the root folder (wallet-risk-scoring/), then run:
 
-1. Add your wallet addresses (one per line) to data/wallets.txt.
+1. Add your wallet addresses (one per line) to data/wallets.txt.  (Already added and can be changed as per your needs)
 
-2. Update your Covalent API key in scripts/fetch_wallets.py.
+2. Update your Covalent API key in scripts/debug_fetch_only.py.  (Optional: to check is it working or not) 
 
-3. Run:
+3. Update your Covalent API key in scripts/save_wallet_data.py. 
+
+4. Run:
 
 # Step 1: Fetch transaction data (saves to data/wallet_data/)
 
@@ -157,7 +161,7 @@ python scripts/wallet_risk_scoring.py
 ```
 
 
-4. Final output files will appear in the outputs/ folder:
+5. Final output files will appear in the outputs/ folder:
 
 wallet_features.csv – extracted wallet features
 
